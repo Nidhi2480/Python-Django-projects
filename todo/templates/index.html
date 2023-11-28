@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+  
+
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-dark bg-dark" style="height: 100px; padding: 10px;">
+                <span class="navbar-brand mb-0 h1">ToDO</span>
+            </nav>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-5 mt-5 ml-5">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group shadow">
+                    
+                    <input type="text" class="form-control" id="name" name="task" placeholder="Enter the task name" required>
+                </div>
+                <div class="form-group shadow">
+                   
+                    <input type="text" class="form-control" id="priority" name="priority" placeholder="Enter the priority" required>
+                </div>
+                <div class="form-group shadow">
+                   
+                    <input type="date" class="form-control" id="priority" name="date" placeholder="Enter the date" required>
+                </div>
+                <div class="form-group text-center">
+                    <centre><button type="submit" class="btn btn-secondary">Submit</button></centre>
+                </div>
+            </form>
+        </div>
+        
+        <div class="col-md-6 mt-4 ml-5">
+            <div class="row">
+                    <div class="col-md-12">
+                    <nav class="navbar navbar-dark bg-dark">
+                        <span class="navbar-brand mb-0 h1">TASKS Todo</span>
+                    </nav>
+                </div>
+             </div>
+            {% for i in task1 %}
+            <div class="card mt-2 shadow">
+                <div class="card-body">
+                  <h6 class="card-subtitle mb-2 text-muted"><b>Task:</b>{{i.name}}</h6>
+                  <p class="card-text"><b>Priority:</b>{{i.priority}}</p>
+                  <p class="card-text"><b>Date    :</b>{{i.date}}</p>
+                  <a href="{% url 'delete' i.id %}" class="btn btn-dark">Done</a>
+                  <a href="{% url 'update' i.id %}" class="btn btn-secondary">Update</a>
+                </div>
+              </div>
+              {% endfor %}
+        </div>
+        
+    </div>
+    
+
+
+
+
+{% endblock %}

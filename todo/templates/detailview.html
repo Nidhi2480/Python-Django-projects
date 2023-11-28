@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    
+    
+        <div class="row">
+                <div class="col-md-12">
+                <nav class="navbar navbar-dark bg-dark">
+                    <span class="navbar-brand mb-0 h1">TASKS Todo</span>
+                </nav>
+            </div>
+         </div>
+        
+        <div class="card mt-2 shadow">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted"><b>Task:</b>{{obj.name}}</h6>
+              <p class="card-text"><b>Priority:</b>{{obj.priority}}</p>
+              <p class="card-text"><b>Date    :</b>{{obj.date}}</p>
+              <a href="{% url 'listview' %}" class="btn btn-secondary">Go back</a>
+              <a href="{% url 'deleteview' obj.id %}" class="btn btn-dark">Done</a>
+              <a href="{% url 'updateview' obj.id %}" class="btn btn-secondary">Update</a>
+            </div>
+          </div>
+          
+    </div>
+    
+
+
+
+
+
+
+{% endblock %}

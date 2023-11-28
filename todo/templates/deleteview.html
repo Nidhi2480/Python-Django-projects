@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+<form method="POST" enctype="multipart/form-data" style="margin-top: 20%;">
+    {% csrf_token %}
+    <div class="form-group text-center">
+        <label for="name">Are you sure you want to delete this?</label>
+    
+    </div>
+    
+    <div class="form-group text-center">
+        <centre><button type="submit" class="btn btn-secondary">Submit</button></centre>
+    </div>
+</form>
+{% endblock %}
