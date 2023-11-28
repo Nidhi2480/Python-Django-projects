@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+    {% if category %}
+        {{ category.description }}
+    {% else %}
+        Welcome to xtensible store
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    {% if category %}
+        {{ category.name }} -- Xtensible store
+    {% else %}
+        See Our New Collections -- xtensible store
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if category %}
+        <div>
+            <div class="row my_row-class">
+                <div class="mx-auto">
+                    <a class="text-decoration-none" href="{% url 'shop:allprod' %}">See all Products</a>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-1 col-md-5 col-lg-5">
+                        <img class="img-fluid rounded card-image-top myimage" src="{{ category.img.url }}" alt="category picture" >
+                </div>
+                  <div class="col-sm-1 col-md-6 col-lg-6 ml-3">
+                        <h1 class="my_title1">{{ category.name }}</h1><br>
+                        <p class="text-muted">{{ category.description }}</p>
+                </div>
+
+            </div>
+
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="row">
+
+                <img class="my_image image_padding" src="{% static 'images/XtensiBle.png' %}" alt="our products" width="100%">
+
+        </div>
+       <div class="row text-center text-center justify-content-center align-items-center">
+            <div>
+                <h1 class="text-muted">Welcome to X T E N S I B L E</h1>
+            </div>
+        </div>
+    {% endif %}
+        <hr>
+    <h1 class="text-center my_title">Products</h1>
+    <div class="card-container">
+        <div class="row mx_auto">
+            {% for i in products %}
+                <div class="my_bottom_margin col-sm-12 col-md-4 col-lg-4 mb-4">
+                    <div class="card text-center" style="min-width:18rem">
+                        {% if i.img %}
+                            <a href="{{ i.get_url }}"><img class="img-fluid rounded card-image-top myimage" src="{{ i.img.url }}" alt="our products"></a>
+                        {% endif%}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.name }}</h5>
+
+                        <p class="card-text">Rs.{{ i.price }}</p>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    {% if products.paginator.num_pages > 1 %}
+                    <div class="text-center">
+                        {% for pg in products.paginator.page_range %}
+                        <a href="?page={{ pg }}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif %}">{{ pg }}</a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endblock %}

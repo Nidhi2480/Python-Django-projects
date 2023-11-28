@@ -1,0 +1,117 @@
+
+body{
+font-family: 'Roboto', sans-serif;
+}
+.nav-item{
+    letter-spacing:.2em;
+    font-size:15px;
+    text-transform:uppercase;
+
+}
+.dropdown-item{
+    color:red;
+    letter-spacing:.2em;
+    font-size:15px;
+    text-transform:uppercase;
+}
+.my_footer{
+    width:100%;
+    margin-top:21px;
+    height: 230px;
+    background-image: url('../images/footer.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.my_footer p{
+     font-size:15px;
+     color: #fff;
+     padding-top:100px;
+
+
+
+}
+/*** category ***/
+.my_row-class{
+    padding-top:20px;
+}
+.my_row-class .mx_auto{
+    color:#000;
+    font-size:12px;
+}
+
+.my_title {
+    text-transform: uppercase;
+    font-size: 30px;
+    letter-spacing: 0.2em;
+}
+.card-container {
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.myimage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
+}
+.image_padding {
+    padding: 5px;
+}
+
+.my_bottom_margin {
+    margin-bottom: 10px;
+}
+
+.card-body h4 {
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+}
+.category-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20%;
+}
+.my_title1 {
+        text-transform: uppercase;
+        font-size: 30px;
+        letter-spacing: 0.2em;
+    }
+.my_title4 {
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 0.2em;
+}
+.product-details {
+
+    padding: 10px;
+    border: none;
+}
+.link{
+color:black;
+}
+a {
+  text-decoration: none;
+  color:black;
+}
+a:visited { color:black;
+}
+a:hover {
+    text-decoration:none;
+    color:black;
+}
+a:active {
+  color: red;
+}

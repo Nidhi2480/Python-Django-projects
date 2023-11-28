@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+
+        cart items
+
+{% endblock %}
+{% block title %}
+        Your cart -- Xtensible store
+
+{% endblock %}
+
+{% block content %}
+{% if cartitems %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-9 mb-9">
+            <h6 class="text-center my_title">Your Cart</h6><br>
+                <table class="table">
+                    {% for i in cartitems %}
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td> <a href="{{ i.product.get_url }}"><img class="img-fluid rounded" src="{{ i.product.img.url }}" width="150px" ></a></td>
+                            <td class="product-details"><p class="my_title4"><b>{{ i.product.name|truncatewords:5 }} </b></p><br><p>
+                                 SKU  : {{ i.product.id }}<br>
+                                Price: <b>Rs.{{ i.product.price }}</b><br>
+                                 Qty  : {{ i.quantity }} * <b>{{ i|truncatewords:7 }}</b><br><hr>
+                                <p class="text-right">Total: <b>Rs.{{i.subtotal}}</b></p></p>
+
+                            </td>
+                            <td>
+                            {% if i.product.stock > 0 %}
+                            <a class="link" href="{% url 'cart:cart_add' i.product.id %}"><i class="fa-solid fa-plus"></i></a>
+                            {% endif %}
+            &nbsp;&nbsp;&nbsp;             <a href="{% url 'cart:cart_remove' i.product.id %}"><i class="fa-solid fa-minus"></i></a>
+                                &nbsp;&nbsp;&nbsp;<a href="{% url 'cart:cart_delete' i.product.id %}"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+        </div>
+        <div class="text-center col-lg-3 ">
+            <h6>Please review the products in the cart before checkout</h6><br>
+        <table class="table">
+             <tbody>
+                        <tr>
+                            <td>
+                                    <a class="btn btn-secondary" href="{% url 'shop:allprod' %}"> Continue Shopping</a><br>
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                            <p class="text-center my_title">Rs.{{ total }}</p><br>
+                                <a class="btn btn-warning" href=""> Checkout</a><br>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+
+        </div>
+    </div>
+</div>
+
+{% else %}
+    <h6 style="margin-top:50px" class="text-center my_title">Your Cart is Empty</h6><br>
+{% endif %}
+{% endblock %}

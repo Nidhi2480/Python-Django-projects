@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+
+        {{ products.description }}
+
+{% endblock %}
+{% block title %}
+        {{ products.name }} -- Xtensible store
+
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="container my-5">
+        <div class="row ml-1 mb-5">
+        <a class="btn btn-light" href="{{ products.category.get_url }}">{{ products.category }}</a>
+        </div>
+        <div class="row">
+        <div class="col-lg-4 mt-2">
+            <a href="#">
+                <img class="img-fluid rounded" src="{{ products.img.url }}" alt="Product Image">
+            </a>
+        </div>
+        <div class="col-lg-8">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="text-uppercase my_title">{{ products.name }}</h2>
+            </div>
+
+            {% if products.stock <= 0 %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Out of Stock</strong>
+                </div>
+            {% else %}
+                <div class="alert alert-success" role="alert">
+                    <strong>{{ products.stock }} left</strong>
+                </div>
+            {% endif %}
+
+            <p class="lead">Product Description:</p>
+            <p class="text-justify text-muted">{{ products.description }}</p>
+
+            <p class="text-left my_title">Rs.{{ products.price }}</p>
+            <button type="button" class="btn btn-warning"><a href="{% url 'cart:cart_add' products.id  %}">Add to Cart</a></button>
+        </div>
+    </div>
+</div>
+{% endblock %}
