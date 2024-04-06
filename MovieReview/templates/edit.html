@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card bg-white">
+                <div class="card-header bg-secondary text-white text-center">Edit Movie</div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <label for="Movie_Title" class="col-sm-3 col-form-label text-right">Movie Title:</label>
+                            <div class="col-sm-9">
+                                {{ form.Movie_Title }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="slug" class="col-sm-3 col-form-label text-right">Slug:</label>
+                            <div class="col-sm-9">
+                                {{ form.slug }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Description" class="col-sm-3 col-form-label text-right">Description:</label>
+                            <div class="col-sm-9">
+                                {{ form.Description }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Poster" class="col-sm-3 col-form-label text-right">Poster:</label>
+                            <div class="col-sm-9">
+                                {{ form.Poster }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="category" class="col-sm-3 col-form-label text-right">Category:</label>
+                            <div class="col-sm-9">
+                                {{ form.category }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Actors" class="col-sm-3 col-form-label text-right">Actors:</label>
+                            <div class="col-sm-9">
+                                {{ form.Actors }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Release_date" class="col-sm-3 col-form-label text-right">Release Date:</label>
+                            <div class="col-sm-9">
+                                {{ form.Release_date }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="youtube_link" class="col-sm-3 col-form-label text-right">Youtube Link:</label>
+                            <div class="col-sm-9">
+                                {{ form.youtube_link }}
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-center">
+                            <div class="col-sm-9">
+                                <button type="submit" class="btn btn-secondary">Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

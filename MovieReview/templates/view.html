@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+    <meta name="description" content="Cart items">
+{% endblock %}
+
+{% block title %}
+    Your Cart - Xtensible Store
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">User Profile</div>
+
+                    <div class="card-body">
+                        <p>Username: {{ profile.user.username }}</p>
+
+                        <div class="text-center">
+                            <a href="#">
+                                <img class="img-fluid rounded-circle myimage" src="{{ profile.Profile.url }}" alt="Profile Image" style="width: 200px; height: 200px;">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="{% url 'movieprofile:edit_profile' %}" class="btn btn-warning">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

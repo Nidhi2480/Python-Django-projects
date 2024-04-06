@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'movie:allmovie' %}">
+     HOME
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown {% if shop in request.path %} active {% endif %}" >
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+          CATEGORY
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'movie:allmovie' %}">All Movies</a>
+          {% for cat in links %}
+          <a href="{{ cat.get_url }}" class="dropdown-item">{{ cat.name }}</a>
+          {% endfor %}
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {% if user.is_authenticated %}
+          {{ user.username }}
+          {% else %}
+          My Account
+          {% endif %}
+        </a>
+        <div class="dropdown-menu">
+          {% if user.is_authenticated %}
+          <a class="dropdown-item" href="{% url 'movieadd:addmovie' %}">Add Movie</a>
+          <a class="dropdown-item" href="{% url 'movieadd:update' %}">Update Movie</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'movieprofile:view_profile' %}">Profile</a>
+          <a class="dropdown-item" href="{% url 'movie:logout' %}">Logout</a>
+          {% else %}
+          <a class="dropdown-item" href="{% url 'movie:login' %}">Login</a>
+          {% endif %}
+        </div>
+      </li>
+    </ul>
+    <form action="{% url 'search:searchpr'  %}" method="GET" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+  </div>
+</nav>

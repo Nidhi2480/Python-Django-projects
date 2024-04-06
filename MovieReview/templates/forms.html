@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">Add Movie</div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="Movie_Title">Movie Title:</label>
+                            {{ form.Movie_Title }}
+                        </div>
+                        <div class="form-group">
+                            <label for="slug">Slug:</label>
+                            {{ form.slug }}
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Description:</label>
+                            {{ form.Description }}
+                        </div>
+                        <div class="form-group">
+                            <label for="Poster">Poster:</label>
+                            {{ form.Poster }}
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category:</label>
+                            {{ form.category }}
+                        </div>
+                        <div class="form-group">
+                            <label for="Actors">Actors:</label>
+                            {{ form.Actors }}
+                        </div>
+                        <div class="form-group">
+                            <label for="Release_date">Release Date:</label>
+                            {{ form.Release_date }}
+                        </div>
+                        <div class="form-group">
+                            <label for="youtube_link">Youtube Link:</label>
+                            {{ form.youtube_link }}
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

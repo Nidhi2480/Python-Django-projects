@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+
+        movies list
+
+{% endblock %}
+{% block title %}
+        Your movies -- CineSeek
+
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-12 mb-9">
+            <h6 class="text-center my_title">Your List</h6><br>
+                <table class="table">
+                    {% for i in mov %}
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td> <a href="{{ i.Movies.get_url }}"><img class="img-fluid rounded" src="{{ i.Poster.url }}" width="150px" ></a></td>
+                            <td class="movie-details"><p class="my_title4"><b>{{ i|truncatewords:7 }}</b><br>
+                                 Movie details:<b>{{ i.Description|truncatewords:17 }}<br></b>
+                                <a href="{% url 'movieadd:update' i.id %}">update</a>
+                                </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-warning" href="{% url 'movieadd:update' i.id %}"> update</a><br><hr>
+                                <p class="text-right"><b><br></b></p></p>
+                                                    
+                            </td>
+                       
+                    {% endfor %}
+                </table>
+        </div>
+       
+
+
+{% endblock %}
