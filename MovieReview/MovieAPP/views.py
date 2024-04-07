@@ -33,6 +33,7 @@ def proddetail(request,c_slug,product_slug):
         print('failed to fetch')
     return render(request,'product.html',{'movies':mov})
 def login(request):
+    message1={}
     if request.method=='POST':
         username=request.POST['username']
         password=request.POST['password']
@@ -41,14 +42,15 @@ def login(request):
             auth.login(request,user)
             return redirect('movie:allmovie')
         else:
-            messages.info(request,'invalid credentials')
-            return render(request,'login.html')
+            messages.error(request, 'Invalid username or password')
+            return render(request, 'login.html')
     else:
         return render(request,'login.html')
 
 
 
 def register(request):
+    request.session.pop('django.contrib.messages', None)
     if request.method == 'POST':
         username=request.POST['username']
         first_name=request.POST['first_name']
@@ -56,14 +58,14 @@ def register(request):
         email=request.POST['email']
         password=request.POST['password']
         password2=request.POST['password2']
-    
+
         if password==password2:
             if User.objects.filter(username=username).exists():
                 messages.info(request,'username already exists')
                 return redirect('movie:register')
             elif User.objects.filter(email=email).exists():
                 messages.info(request,'email already exists')
-                return redirect('register')
+                return redirect('movie:register')
             else:
                 user=User.objects.create_user(username=username,first_name=first_name,last_name=last_name,email=email,password=password)
                 user.save()
@@ -71,10 +73,10 @@ def register(request):
                 return redirect('movie:login')
         else:
             messages.error(request, 'Passwords do not match')
-            return redirect('register')
+            return redirect('movie:register')
     else:
         return render(request,'register.html')
-    
+
 def logout(request):
     auth_logout(request)
     return redirect('/')

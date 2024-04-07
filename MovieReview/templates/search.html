@@ -28,8 +28,8 @@
                             <a href="{{ i.get_url }}"><img class="img-fluid rounded card-image-top myimage" src="{{ i.Poster.url }}" alt="our products"></a>
                         {% endif %}
                         <div class="card-body">
-                            <h5 class="card-title">{{ i.Movie_Title }}</h5>
-                            <p class="card-text">Rs.{{ i.price }}</p>
+                            <h5 class="card-title my_title">{{ i.Movie_Title }}</h5>
+                            <p class="card-text my_title4">{{ i.Description|truncatewords:10 }}</p>
                         </div>
                     </div>
                 </div>

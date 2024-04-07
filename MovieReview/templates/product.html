@@ -24,12 +24,15 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h2 class="text-uppercase my_title">{{ movies.Movie_Title }}</h2>
                 </div>
-                <p class="lead">movies Description:</p>
-                <p class="text-justify">{{ movies.Description }}</p>
+                <p class="lead ">Movie Description:</p>
+                <p class="text-justify my_title4">{{ movies.Description }}</p>
+                <b><p class="lead">Actors:</p></b>
+                <p class="text-justify my_title4">{{ movies.Actors }}</p>
+                <p class="lead">Realease Date:</p>
+                <p class="text-justify">{{ movies.Release_date }}</p>
 
-                
-                <p class="text-left my_title">Youtube Link: <a href="{{ movies.youtube_link }}">{{ movies.youtube_link }}</a></p>
-               
+                <p class="text-left my_title4">Watch Trailer: <a href="{{ movies.youtube_link }}">{{ movies.youtube_link }}</a></p>
+
             </div>
         </div>
     </div>

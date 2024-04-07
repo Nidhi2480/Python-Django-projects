@@ -17,13 +17,29 @@
                     <div class="card-header">User Profile</div>
 
                     <div class="card-body">
-                        <p>Username: {{ profile.user.username }}</p>
+                        <p class="my_title">Username: {{ profile.user.username }}</p>
 
+                        {% if profile.Profile %}
                         <div class="text-center">
-                            <a href="#">
-                                <img class="img-fluid rounded-circle myimage" src="{{ profile.Profile.url }}" alt="Profile Image" style="width: 200px; height: 200px;">
-                            </a>
+                            <img class="img-fluid rounded-circle myimage" src="{{ profile.Profile.url }}" alt="Profile Image" style="width: 200px; height: 200px;">
                         </div>
+                        {% else %}
+                        <div class="text-center">
+                            <img src="{% static 'images/l60Hf (1).png' %}" alt="Default Profile Picture" class="img-fluid rounded-circle">
+                        </div>
+                        {% endif %}
+
+                        {% if profile.Bio %}
+                        <p class="my_title4">Bio: {{ profile.Bio }}</p>
+                        {% endif %}
+
+                        {% if profile.Preference %}
+                        <p class="my_title">Preference: {{ profile.Preference }}</p>
+                        {% endif %}
+
+                        {% if profile.DOB %}
+                        <p class="my_title">Date of Birth: {{ profile.DOB }}</p>
+                        {% endif %}
                     </div>
 
                     <div class="card-footer">

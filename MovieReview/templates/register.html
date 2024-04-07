@@ -1,6 +1,6 @@
 {% load static %}
 {% for messeges in messages %}
-<h5 class="login-heading">{{messeges}}</h5>
+<h5 class="login-heading text-center">{{messeges}}</h5>
 {% endfor %}
 <!DOCTYPE html>
 <html>
@@ -75,7 +75,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <a href="{% url 'movie:login' %}" class="btn btn-primary w-100">Go Back</a>
-                            
+
                         </div>
                         <div class="col-md-6">
                             <button type="submit" class="btn btn-secondary w-100">Register</button>

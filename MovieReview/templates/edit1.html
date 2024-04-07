@@ -20,7 +20,12 @@
                 <div class="card-body">
                     <div class="row justify-content-center mb-4">
                         <div class="col-md-4">
+                             {% if form.instance.Profile %}
                             <img src="{{ form.instance.Profile.url }}" alt="Current Profile Picture" class="img-fluid rounded-circle">
+                            {% else %}
+
+                            <img src="{% static 'images/l60Hf (1).png' %}" alt="Default Profile Picture" class="img-fluid rounded-circle">
+                            {% endif %}
                         </div>
                     </div>
                     <form method="post" enctype="multipart/form-data">

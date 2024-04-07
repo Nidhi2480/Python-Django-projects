@@ -25,16 +25,16 @@
                             <td> <a href="{{ i.Movies.get_url }}"><img class="img-fluid rounded" src="{{ i.Poster.url }}" width="150px" ></a></td>
                             <td class="movie-details"><p class="my_title4"><b>{{ i|truncatewords:7 }}</b><br>
                                  Movie details:<b>{{ i.Description|truncatewords:17 }}<br></b>
-                                <a href="{% url 'movieadd:update' i.id %}">update</a>
-                                </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-warning" href="{% url 'movieadd:update' i.id %}"> update</a><br><hr>
+
+                                </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-warning" href="{% url 'movieadd:update' i.id %}"> update</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="{% url 'movieadd:delete' i.id %}"> delete</a><br><hr>
                                 <p class="text-right"><b><br></b></p></p>
-                                                    
+
                             </td>
-                       
+
                     {% endfor %}
                 </table>
         </div>
-       
+
 
 
 {% endblock %}
